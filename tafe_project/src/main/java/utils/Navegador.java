@@ -12,7 +12,7 @@ public class Navegador {
 
 
     public void abrirNavegador(){
-        String caminhoDriver = "driver/chromedriver.exe";
+        String caminhoDriver = "driver/chromedriver";
 
         System.setProperty("webdriver.chrome.driver", caminhoDriver);
 

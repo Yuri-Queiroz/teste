@@ -5,19 +5,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Locale;
 
-public class TestCase02 {
+public class TestCase04 {
 
     private static Faker faker = new Faker(new Locale("PT-BR"));
 
-    public static WebDriver driver;
-    public static WebDriverWait wait;
-
     @Test
-    public void LoginUserWithCorrectEmailAndPassword(){
+    public void LogoutUser(){
         String caminho = "driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", caminho);
         WebDriver browser = new ChromeDriver();
@@ -89,8 +87,9 @@ public class TestCase02 {
 
         browser.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[10]/a")).isDisplayed();
 
-        browser.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a")).click();
-        browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2")).isDisplayed();
+        browser.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click();
+        String urlAtual = browser.getCurrentUrl();
+        Assert.assertEquals(urlAtual, "https://automationexercise.com/login");
 
         browser.quit();
     }
