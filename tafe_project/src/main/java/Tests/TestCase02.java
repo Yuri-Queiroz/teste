@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.Locale;
@@ -12,17 +14,18 @@ import java.util.Locale;
 public class TestCase02 {
 
     private static Faker faker = new Faker(new Locale("PT-BR"));
+    public WebDriver browser;
 
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+    @BeforeTest
+    public void abrirNavegador(){
+        String caminho = "driver/chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", caminho);
+        browser = new ChromeDriver();
+        browser.navigate().to("https://automationexercise.com/");
+    }
 
     @Test
     public void LoginUserWithCorrectEmailAndPassword(){
-        String caminho = "driver/chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", caminho);
-        WebDriver browser = new ChromeDriver();
-        browser.navigate().to("https://automationexercise.com/");
-
         browser.findElement(By.xpath("//a[@href=\"/login\"]")).click();
 
         String password = faker.internet().password();
@@ -91,7 +94,10 @@ public class TestCase02 {
 
         browser.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a")).click();
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2")).isDisplayed();
+    }
 
+    @AfterTest
+    public void fechar(){
         browser.quit();
     }
 }

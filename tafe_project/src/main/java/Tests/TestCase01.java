@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.Locale;
@@ -11,16 +13,21 @@ import java.util.Locale;
 public class TestCase01 {
 
     private static Faker faker = new Faker(new Locale("PT-BR"));
+    public WebDriver browser;
 
     public static String password;
     public static String email;
 
-    @Test
-    public void RegisterUser(){
+    @BeforeTest
+    public void abrirNavegador(){
         String caminho = "driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", caminho);
-        WebDriver browser = new ChromeDriver();
+        browser = new ChromeDriver();
         browser.navigate().to("https://automationexercise.com/");
+    }
+
+    @Test
+    public void RegisterUser(){
 
         browser.findElement(By.tagName("body")).isDisplayed();
 
@@ -89,6 +96,11 @@ public class TestCase01 {
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2")).isDisplayed();
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
 
+        browser.quit();
+    }
+
+    @AfterTest
+    public void fechar(){
         browser.quit();
     }
 
