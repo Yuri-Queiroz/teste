@@ -42,6 +42,7 @@ public class TestCase01 {
 
 
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[2]")).sendKeys(name);
+
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[3]")).sendKeys(email);
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/button")).click();
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/h2")).isDisplayed();
