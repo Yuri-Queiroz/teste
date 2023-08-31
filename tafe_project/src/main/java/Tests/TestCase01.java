@@ -44,7 +44,9 @@ public class TestCase01 {
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[2]")).sendKeys(name);
 
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[3]")).sendKeys(email);
+
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/button")).click();
+
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/h2")).isDisplayed();
 
         //Clicar no radio
@@ -54,10 +56,12 @@ public class TestCase01 {
 
         //Data do nascimento
         browser.findElement(By.xpath("//*[@id=\"days\"]")).sendKeys("8");
+
         browser.findElement(By.xpath("//*[@id=\"months\"]")).sendKeys("10");
+
         browser.findElement(By.xpath("//*[@id=\"years\"]")).sendKeys("1996");
 
-        //Clicando nos radios
+        //Clicando nos radios!
         browser.findElement(By.xpath("//*[@id=\"newsletter\"]")).click();
         browser.findElement(By.xpath("//*[@id=\"optin\"]")).click();
 
