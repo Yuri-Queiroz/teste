@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -20,7 +22,7 @@ public class TestCase01 {
 
     @BeforeTest
     public void abrirNavegador(){
-        String caminho = "driver/chromedriver.exe";
+        String caminho = "driver/chromedriver";
         System.setProperty("webdriver.chrome.driver", caminho);
         browser = new ChromeDriver();
         browser.navigate().to("https://automationexercise.com/");
@@ -28,7 +30,6 @@ public class TestCase01 {
 
     @Test
     public void RegisterUser(){
-
         browser.findElement(By.tagName("body")).isDisplayed();
 
         browser.findElement(By.xpath("//a[@href=\"/login\"]")).click();
@@ -37,6 +38,8 @@ public class TestCase01 {
         password = faker.internet().password();
         email = faker.internet().emailAddress();
         String name = faker.name().nameWithMiddle();
+
+
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[2]")).sendKeys(name);
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[3]")).sendKeys(email);
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/button")).click();
