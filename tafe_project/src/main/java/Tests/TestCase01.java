@@ -33,6 +33,7 @@ public class TestCase01 {
         browser.findElement(By.tagName("body")).isDisplayed();
 
         browser.findElement(By.xpath("//a[@href=\"/login\"]")).click();
+
         browser.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/h2")).isDisplayed();
 
         password = faker.internet().password();
